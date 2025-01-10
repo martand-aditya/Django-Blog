@@ -1,9 +1,13 @@
 from django.shortcuts import render
+# . because models is in same directory
+from .models import Post
 #used when we have to return httpresponse
 #from django.http import HttpResponse
 
 # Create your views here.
 #list of dictionaries
+'''
+Earlier hardcoded data is passed by creating a dictionary 
 posts = [
     {
         'author': 'martand',
@@ -18,10 +22,12 @@ posts = [
         'date_posted':'January 9 2025'
     },
 ]
+'''
 def home(request):
     context = {
 
-        'posts':posts
+        #'posts':posts
+        'posts' : Post.objects.all()
     }
     #return HttpResponse('<h1>Blog home</h1>')
     #render inbuilt function which returns rendered html page
